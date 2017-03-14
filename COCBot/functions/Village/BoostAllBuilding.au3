@@ -1,7 +1,7 @@
 ;==>BoostBarracks
 Func BoostAllBuilding()
 	$BoostAll = 0
-	If (GUICtrlRead($cmbBoostBarracks) > 0) And ($boostsEnabled = 1) Then
+	If (GUICtrlRead($cmbBoostBarracks) > 00.99) And ($boostsEnabled = 1) Then
 
 		If $barrackPos[0][0] = "" Then
 			If Not LocateBarrack() Then Return
@@ -39,7 +39,7 @@ Func BoostAllBuilding()
 			EndIf
 
 			If GUICtrlRead($chkBoostRax3) = 1 Then; Barrack 3
-				SetLog(GetLangText("msgBoostingBarrack") & "3...", $COLOR_BLUE)
+				SetLog(GetLangTxt("msgBoostingBarrack") & "3...", $COLOR_BLUE)
 				Click($barrackPos[2][0], $barrackPos[2][1]) ;Click Barrack 3
 				If _Sleep(500) Then Return
 				BoostBuilding()
@@ -235,7 +235,7 @@ Func BoostSpells()
 		_CaptureRegion()
 		If _ColorCheck(_GetPixelColor(420, 375), Hex(0xd2ec78, 6), 20) Then ;Confirm Message
 			Click(420, 375)
-			If _Sleep(2000) Then Return
+			If _Sleep(2000) Then return
 			_CaptureRegion()
 			If _ColorCheck(_GetPixelColor(586, 267), Hex(0xd80405, 6), 20) Then ;Not enough Gem
 				_GUICtrlComboBox_SetCurSel($cmbBoostBarracks, 0)
